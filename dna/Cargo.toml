@@ -1,0 +1,22 @@
+[package]
+authors = ["michael.dougherty@holo.host"]
+edition = "2021"
+name = "simple"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "simple"
+
+[dependencies]
+derive_more = "0.99"
+serde = "1.0"
+thiserror = "1.0"
+
+hdk = "0.0.130"
+# holo_hash = {version = "0.0.23", features = ["encoding"]}
+
+
+[patch.crates-io]
+hdk = { path = "/home/mike/Holo/chain/crates/hdk", version = "0.0.130" }
+holo_hash = { path = "/home/mike/Holo/chain/crates/holo_hash", version = "0.0.23" }

@@ -1,0 +1,14 @@
+---
+manifest_version: "1"
+name: simple
+description: ~
+roles:
+  - id: simple
+    provisioning:
+      strategy: create
+      deferred: false
+    dna:
+      bundled: "./simple.dna"
+      uid: ~
+      properties: ~
+      clone_limit: 0
