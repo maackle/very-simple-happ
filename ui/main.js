@@ -23,24 +23,25 @@ switch (process.argv[2]) {
 async function install() {
     const adminClient = await AdminWebsocket.connect(`ws://localhost:${adminPort}`, 12000, signalCb)
     let agent_key = await adminClient.generateAgentPubKey()
-    await adminClient.uninstallApp({
-        installed_app_id: 'app',
-    })
-    console.log("installing app")
+    try {
+        await adminClient.uninstallApp({
+            installed_app_id: 'app',
+        })
+        console.log("uninstalled app")
+    } catch (e) { }
     await adminClient.installAppBundle({
         agent_key,
         installed_app_id: 'app',
         path: './dna/simple.happ',
         membrane_proofs: {}
     })
+    console.log("installed app")
     try {
-        console.log("attaching app interface")
         await adminClient.attachAppInterface({
             port: appPort
         })
-    } catch (e) {
-        console.log("(already attached)")
-    }
+        console.log("attached app interface")
+    } catch (e) { }
     adminClient.client.close()
 }
 
