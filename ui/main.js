@@ -70,7 +70,7 @@ async function list() {
     const info = await client.appInfo({ installed_app_id: 'app' })
     console.log(info)
     const cell_id = info.cell_data[0].cell_id;
-    const items = await client.callZome({
+    const list = await client.callZome({
         cap: null,
         cell_id,
         zome_name: "simple",
@@ -78,7 +78,8 @@ async function list() {
         provenance: cell_id[1],
         payload: null,
     }, 30000)
+    list.items.sort((a, b) => a - b);
     adminClient.client.close()
     client.client.close()
-    console.log(JSON.stringify(items, null, 2))
+    console.log(JSON.stringify(list, null, 2))
 }
