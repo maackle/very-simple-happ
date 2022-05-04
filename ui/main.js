@@ -1,4 +1,5 @@
 import { AdminWebsocket, AppWebsocket } from "@holochain/client"
+import * as path from 'path'
 
 const adminPort = 3333
 const appPort = 4444
@@ -32,7 +33,7 @@ async function install() {
     await adminClient.installAppBundle({
         agent_key,
         installed_app_id: 'app',
-        path: './dna/simple.happ',
+        path: path.resolve('../dna/simple.happ'),
         membrane_proofs: {}
     })
     console.log("installed app")
