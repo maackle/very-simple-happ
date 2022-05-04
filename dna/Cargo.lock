@@ -94,7 +94,7 @@ checksum = "ab5ef0d4909ef3724cc8cce6ccc8572c5c817592e9285f5464f8e86f8bd3726e"
 
 [[package]]
 name = "hdk"
-version = "0.0.130"
+version = "0.0.131"
 dependencies = [
  "hdk_derive",
  "holo_hash",
@@ -111,7 +111,7 @@ dependencies = [
 
 [[package]]
 name = "hdk_derive"
-version = "0.0.31"
+version = "0.0.32"
 dependencies = [
  "holochain_integrity_types",
  "paste",
@@ -122,7 +122,7 @@ dependencies = [
 
 [[package]]
 name = "holo_hash"
-version = "0.0.23"
+version = "0.0.24"
 dependencies = [
  "holochain_serialized_bytes",
  "kitsune_p2p_dht_arc",
@@ -133,7 +133,7 @@ dependencies = [
 
 [[package]]
 name = "holochain_deterministic_integrity"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "hdk_derive",
  "holo_hash",
@@ -146,7 +146,7 @@ dependencies = [
 
 [[package]]
 name = "holochain_integrity_types"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "holo_hash",
  "holochain_serialized_bytes",
@@ -209,7 +209,7 @@ dependencies = [
 
 [[package]]
 name = "holochain_zome_types"
-version = "0.0.31"
+version = "0.0.32"
 dependencies = [
  "holo_hash",
  "holochain_integrity_types",
@@ -275,7 +275,7 @@ dependencies = [
 
 [[package]]
 name = "kitsune_p2p_timestamp"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "chrono",
  "derive_more",

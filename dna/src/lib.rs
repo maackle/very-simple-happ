@@ -14,13 +14,15 @@ fn path_entry_hash() -> ExternResult<EntryHash> {
 }
 
 #[hdk_extern]
-pub fn create(n: u32) -> ExternResult<()> {
-    let item = Item(n);
-    let _ = create_entry(item.clone())?;
-    let eh = hash_entry(item)?;
+pub fn create(ns: Vec<u32>) -> ExternResult<()> {
+    for n in ns {
+        let item = Item(n);
+        let _ = create_entry(item.clone())?;
+        let eh = hash_entry(item)?;
 
-    let path_eh = path_entry_hash()?;
-    create_link(path_eh, eh.clone(), LinkType(0), ())?;
+        let path_eh = path_entry_hash()?;
+        create_link(path_eh, eh.clone(), LinkType(0), ())?;
+    }
 
     Ok(())
 }

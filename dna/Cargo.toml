@@ -13,10 +13,10 @@ derive_more = "0.99"
 serde = "1.0"
 thiserror = "1.0"
 
-hdk = "0.0.130"
-# holo_hash = {version = "0.0.23", features = ["encoding"]}
+hdk = "0.0.131"
+# holo_hash = {version = "0.0.24", features = ["encoding"]}
 
 
 [patch.crates-io]
-hdk = { path = "/home/mike/Holo/chain/crates/hdk", version = "0.0.130" }
-holo_hash = { path = "/home/mike/Holo/chain/crates/holo_hash", version = "0.0.23" }
+hdk = { path = "/home/mike/Holo/chain/crates/hdk", version = "0.0.131" }
+# holo_hash = { path = "/home/mike/Holo/chain/crates/holo_hash", version = "0.0.24" }

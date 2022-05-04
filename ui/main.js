@@ -12,7 +12,7 @@ switch (process.argv[2]) {
         console.log('install complete')
         break
     case 'c':
-        await create()
+        await create(parseInt(process.argv[3], 10))
         console.log('create complete')
         break
     case 'l':
@@ -46,20 +46,27 @@ async function install() {
     adminClient.client.close()
 }
 
-async function create() {
+async function create(num) {
+    num = num || 1
     const adminClient = await AdminWebsocket.connect(`ws://localhost:${adminPort}`, 12000, signalCb)
     await adminClient.enableApp({ installed_app_id: 'app' })
     const client = await AppWebsocket.connect(`ws://localhost:${appPort}`, 12000, signalCb)
     const info = await client.appInfo({ installed_app_id: 'app' })
     console.log(info)
     const cell_id = info.cell_data[0].cell_id;
+
+    const payload = []
+    for (let i = 0; i < num; i++) {
+        payload.push(Math.floor(Math.random() * (2 ** 31)))
+    }
+
     await client.callZome({
         cap: null,
         cell_id,
         zome_name: "simple",
         fn_name: 'create',
         provenance: cell_id[1],
-        payload: Math.floor(Math.random() * (2 ** 31)),
+        payload,
     }, 30000)
     adminClient.client.close()
     client.client.close()

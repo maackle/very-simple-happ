@@ -3,6 +3,7 @@ manifest_version: "1"
 name: simple
 uuid: 00000000-0000-0000-0000-000000000000
 properties: ~
+origin_time: 2022-05-01T00:00:00.000000Z
 zomes:
   - name: simple
     bundled: target/wasm32-unknown-unknown/release/simple.wasm
