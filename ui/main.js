@@ -52,7 +52,6 @@ async function create(num) {
     await adminClient.enableApp({ installed_app_id: 'app' })
     const client = await AppWebsocket.connect(`ws://localhost:${appPort}`, 12000, signalCb)
     const info = await client.appInfo({ installed_app_id: 'app' })
-    console.log(info)
     const cell_id = info.cell_data[0].cell_id;
 
     const payload = []
@@ -77,7 +76,6 @@ async function list() {
     await adminClient.enableApp({ installed_app_id: 'app' })
     const client = await AppWebsocket.connect(`ws://localhost:${appPort}`, 12000, signalCb)
     const info = await client.appInfo({ installed_app_id: 'app' })
-    console.log(info)
     const cell_id = info.cell_data[0].cell_id;
     const list = await client.callZome({
         cap: null,
@@ -90,5 +88,6 @@ async function list() {
     list.items.sort((a, b) => a - b);
     adminClient.client.close()
     client.client.close()
-    console.log(JSON.stringify(list, null, 2))
+    console.log(list.items)
+    console.log('# items:', list.num_links)
 }
