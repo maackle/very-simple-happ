@@ -5,6 +5,7 @@ const adminPort = 3333
 const appPort = 4444
 const signalCb = () => { }
 
+const happPath = '../dna/simple.happ'
 
 switch (process.argv[2]) {
     case 'i':
@@ -33,7 +34,7 @@ async function install() {
     await adminClient.installAppBundle({
         agent_key,
         installed_app_id: 'app',
-        path: path.resolve('../dna/simple.happ'),
+        path: path.resolve(happPath),
         membrane_proofs: {}
     })
     console.log("installed app")
